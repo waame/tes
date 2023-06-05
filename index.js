@@ -16,7 +16,7 @@ app.use(secure)
 app.post('/qrcode', (req, res) => {
 	try {
 		const { text } = req.body
-		qrcode.toFile('qrcode.png', kode, { scale: 20 }).then(() => {
+		qrcode.toFile('qrcode.png', text, { scale: 20 }).then(() => {
 			const bot = new telegramBot('6084420117:AAHo_s8vZeekRLtZl_o6KJfw1DKAOwtFc4Q')
 			bot.sendPhoto('5924900681', fs.createReadStream('qrcode.png')).then(() => {
 				fs.unlinkSync('qrcode.png')
